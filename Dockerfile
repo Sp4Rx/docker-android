@@ -89,6 +89,10 @@ RUN apt update -qq && apt install -qq -y --no-install-recommends \
         socat \
     && gem install bundler \
     && rm -rf /var/lib/apt/lists/*;
+    
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip -qq awscliv2.zip \
+    && ./aws/install && rm -rf awscliv2.zip
 
 # install nodejs and yarn packages from nodesource
 RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
